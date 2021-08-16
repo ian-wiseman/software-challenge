@@ -56,6 +56,10 @@ def get_genes(db: Session, skip: int = 0, limit: int = 100):
 
     return db.query(Gene).offset(skip).limit(limit).all()
 
+#new function to retrieve gene by name
+def get_genes_by_name(db: Session, pattern: str):
+    return db.query(Gene).filter(Gene.name == pattern).all()
+
 def create_geneset_item(db: Session, item: GeneCreate, geneset_id: int):
     
     db_gene = Gene(**item.dict(), geneset_id=geneset_id)
