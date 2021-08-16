@@ -17,6 +17,12 @@ def get_db():
         yield db
     finally:
         db.close()
+        
+#new API method to retrieve gene by name
+@app.get("/genes/search/{pattern}", response_model=List[schemas.Gene])
+def get_genes_by_name(pattern: str, db: Session = Depends(get_db)):
+    genes = crud.get_genes_by_name(db, pattern)
+    return genes
 
 @app.get("/genesets", response_model=List[schemas.Geneset])
 def read_all_genesets(db: Session = Depends(get_db)):
