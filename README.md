@@ -30,7 +30,7 @@ The API allows the user to create a Geneset, create some Genes, and add genes to
 
 The following should be run under `/backend` folder.
 
-### 1a - Install python
+### 1 Install python
 
 #### Mac/Linux installation:
 Install `python 3.8` with [pyenv](https://github.com/pyenv/pyenv)
@@ -46,15 +46,8 @@ Copy/paste at the following command at the end of your `.zshrc` or `.bash_rc`
 ```bash
 eval "$(pyenv init -)"
 ```
+
 #### Windows installation
-
-```
-choco install pyenv-win
-pyenv install 3.8.0
-pyenv local 3.8.0
-```
-
-### 1b - Install python on Windows
 
 ```
 choco install pyenv-win
