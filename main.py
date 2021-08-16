@@ -1,6 +1,8 @@
 from typing import List
 
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.responses import ORJSONResponse
+
 from sqlalchemy.orm import Session
 
 import crud, models, schemas
@@ -19,7 +21,7 @@ def get_db():
         db.close()
         
 #new API method to get genes without name
-@app.get("/genes", response_model=List[schemas.Gene])
+@app.get("/genes", response_model=List[schemas.Gene], response_class=ORJSONResponse)
 def get_genes(db: Session = Depends(get_db)):
     genes = crud.get_genes(db)
     return genes
