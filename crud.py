@@ -52,9 +52,10 @@ def create_geneset(db: Session, geneset: GenesetCreate):
     db.refresh(db_geneset)
     return db_geneset
 
-def get_genes(db: Session, skip: int = 0, limit: int = 100):
+#update to remove limit
+def get_genes(db: Session, skip: int = 0):
 
-    return db.query(Gene).offset(skip).limit(limit).all()
+    return db.query(Gene).offset(skip).all()
 
 #new function to retrieve gene by name
 def get_genes_by_name(db: Session, pattern: str):
