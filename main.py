@@ -27,7 +27,7 @@ def get_genes(db: Session = Depends(get_db)):
     return genes
         
 #new API method to retrieve gene by name
-@app.get("/genes/search/{pattern}", response_model=List[schemas.Gene])
+@app.get("/genes/search/{pattern}", response_model=List[schemas.Gene], response_model_include=["geneset_id"])
 def get_genes_by_name(pattern: str, db: Session = Depends(get_db)):
     genes = crud.get_genes_by_name(db, pattern)
     return genes
